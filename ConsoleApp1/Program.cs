@@ -2,10 +2,10 @@
 {
     static void Main()
     {
-        Console.WriteLine("El ARCHIVO SE VA A CREAR DE CERO SI UNA SOLA PARTE DEL ENCABEZADO FALTA");
-        if(Funciones.comprobar_archivo() == false)
+        if(Funciones.comprobar_encabezado() == false)
         {
             Funciones.crear_archivo();
         }
+        Funciones.comprobar_indice_existencia();
     }
 }
