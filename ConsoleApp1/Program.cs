@@ -1,18 +1,18 @@
 class Proyecto
 {
-    static void Main()
+    static void Main(string[] args)
     {
         int[,] matriz_temporal = null;
         if (Funciones.comprobar_encabezado() == false)
         {
             Funciones.crear_archivo();
         }
-        while (true) 
+        while (true)
         {
             Console.WriteLine("1:Comprobar estado del archivo \n2:Imprimir datos del archivo \n3:Escribir en el archivo \n4:Crear Archivo nuevo \n5:Crear matriz \n6:Imprimir matrices temporal");
             int opcion = Convert.ToInt32(Console.ReadLine());
-            switch (opcion) 
-            { 
+            switch (opcion)
+            {
                 case 1:
                     if (Funciones.comprobar_encabezado() == false)
                     {
@@ -38,7 +38,7 @@ class Proyecto
                     string texto = Console.ReadLine();
                     int fila = Convert.ToInt32(Console.ReadLine());
                     int existencia = Convert.ToInt32(Console.ReadLine());
-                    Funciones.escribir_lugar_especifico(texto,fila-1,existencia);
+                    Funciones.escribir_lugar_especifico(texto, fila - 1, existencia);
                     break;
                 case 4:
                     Funciones.crear_archivo();
@@ -53,9 +53,16 @@ class Proyecto
                     }
                     matriz_temporal = Funciones.crear_matriz();
                     break;
-                default:
+                case 6:
+                    if (matriz_temporal != null)
+                    {
+                        Funciones.imprimir_matriz(matriz_temporal);
+                    }
                     break;
-                    
+                default:
+                    Excepciones.Lanzar_excepcion(3);
+                    break;
+
             }
         }
 
