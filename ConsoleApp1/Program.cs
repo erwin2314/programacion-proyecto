@@ -2,15 +2,7 @@ class Proyecto
 {
     static void Main()
     {
-        int[,] matriz_temporal_1 = null;
-        int[,] matriz_temporal_2 = null;
-        int[,] matriz_temporal_3 = null;
-        int[,] matriz_temporal_4 = null;
-        int[,] matriz_temporal_5 = null;
-        int[,] matriz_temporal_6 = null;
-        int[,] matriz_temporal_7 = null;
-        int[,] matriz_temporal_8 = null;
-        int[,] matriz_temporal_9 = null;
+        int[,] matriz_temporal = null;
         if (Funciones.comprobar_encabezado() == false)
         {
             Funciones.crear_archivo();
@@ -52,99 +44,14 @@ class Proyecto
                     Funciones.crear_archivo();
                     break;
                 case 5:
-                    Console.WriteLine("En que posicion de matriz temporal se va a guardar? (1-9)");
+                    Console.WriteLine("En que posicion del archivo se va a guardar? (1-9)");
                     bool conversion = Int32.TryParse(Console.ReadLine(), out int posicion);
                     if (conversion == false)
                     {
                         Excepciones.Lanzar_excepcion(3);
                         break;
                     }
-                    switch (posicion)
-                    {
-                        case 1:
-                            matriz_temporal_1 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 2:
-                            matriz_temporal_2 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 3:
-                            matriz_temporal_3 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 4:
-                            matriz_temporal_4 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 5:
-                            matriz_temporal_5 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 6:
-                            matriz_temporal_6 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 7:
-                            matriz_temporal_7 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 8:
-                            matriz_temporal_8 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 9:
-                            matriz_temporal_9 = Funciones.crear_matriz_temporal();
-                            break;
-                        default:
-                            Excepciones.Lanzar_excepcion(3);
-                            break;
-                    }
-                    break;
-                case 6:
-                    Console.WriteLine("Que posicion quieres mostrar? (1-9)");
-                    bool conversion6 = Int32.TryParse(Console.ReadLine(), out int posicion6);
-                    if (conversion6 == false)
-                    {
-                        Excepciones.Lanzar_excepcion(3);
-                        break;
-                    }
-                    switch (posicion6)
-                    {
-                        case 1:
-                            if (matriz_temporal_1 != null)
-                            {
-                                for (int i = 0; i < matriz_temporal_1.GetLength(0); i++)
-                                {
-                                    for (int j = 0; i < matriz_temporal_1.GetLength(1); j++)
-                                    {
-                                        Console.WriteLine(matriz_temporal_1[i, j]);
-                                    }
-                                }
-                            }
-
-                            Console.WriteLine(matriz_temporal_2);
-                            break;
-                        case 2:
-                            matriz_temporal_2 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 3:
-                            matriz_temporal_3 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 4:
-                            matriz_temporal_4 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 5:
-                            matriz_temporal_5 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 6:
-                            matriz_temporal_6 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 7:
-                            matriz_temporal_7 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 8:
-                            matriz_temporal_8 = Funciones.crear_matriz_temporal();
-                            break;
-                        case 9:
-                            matriz_temporal_9 = Funciones.crear_matriz_temporal();
-                            break;
-                        default:
-                            Excepciones.Lanzar_excepcion(3);
-                            break;
-                    }
+                    matriz_temporal = Funciones.crear_matriz();
                     break;
                 default:
                     break;

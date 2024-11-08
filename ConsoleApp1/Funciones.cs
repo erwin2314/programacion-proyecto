@@ -115,7 +115,7 @@ class Funciones
             }
         }
     }
-    public static int[,] crear_matriz_temporal()
+    public static int[,] crear_matriz()
     {
         bool conversion;
         Console.WriteLine("Ingresa la cantidad de columnas");
@@ -137,7 +137,6 @@ class Funciones
         
         if ((filas > 1) && (columnas > 1))
         {
-            Console.WriteLine("Para ingresar cualquier valor debe ir unicamente el valor numerico");
             int[,] matriz = new int[columnas, filas];
             for (int i = 0; i <= columnas-1; i++)
             {
@@ -162,42 +161,5 @@ class Funciones
         Excepciones.Lanzar_excepcion(3);
         Excepciones.Lanzar_excepcion(4);
         return null;
-    }
-    public static int[,] guardar_matriz_temporal_programa(int[,] matriz_a_guardar, int matriz_en_la_que_guardar)
-    {
-        switch (matriz_en_la_que_guardar)
-        {
-            case 1:
-                int[,] matriz_temporal_1 = matriz_a_guardar;
-                return matriz_temporal_1;
-            case 2:
-                int[,] matriz_temporal_2 = matriz_a_guardar;
-                return matriz_temporal_2;
-            case 3:
-                int[,] matriz_temporal_3 = matriz_a_guardar;
-                return matriz_temporal_3;
-            case 4:
-                int[,] matriz_temporal_4 = matriz_a_guardar;
-                return matriz_temporal_4;
-            case 5:
-                int[,] matriz_temporal_5 = matriz_a_guardar;
-                return matriz_temporal_5;
-            case 6:
-                int[,] matriz_temporal_6 = matriz_a_guardar;
-                return matriz_temporal_6;
-            case 7:
-                int[,] matriz_temporal_7 = matriz_a_guardar;
-                return matriz_temporal_7;
-            case 8:
-                int[,] matriz_temporal_8 = matriz_a_guardar;
-                return matriz_temporal_8;
-            case 9:
-                int[,] matriz_temporal_9 = matriz_a_guardar;
-                return matriz_temporal_9;
-            default:
-                Excepciones.Lanzar_excepcion(3);
-                return null;
-        }
-
     }
 }
