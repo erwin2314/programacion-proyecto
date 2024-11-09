@@ -2,17 +2,21 @@ class Proyecto
 {
     static void Main(string[] args)
     {
+        int Salir = 0;
         int[,] matriz_temporal = null;
         if (Funciones.comprobar_encabezado() == false)
         {
             Funciones.crear_archivo();
         }
-        while (true)
+        while (Salir == 0)
         {
-            Console.WriteLine("1:Comprobar estado del archivo \n2:Imprimir datos del archivo \n3:Escribir en el archivo \n4:Crear Archivo nuevo \n5:Crear matriz \n6:Imprimir matrices temporal");
+            Console.WriteLine("0:Salir \n1:Comprobar estado del archivo \n2:Imprimir datos del archivo \n3:Escribir en el archivo \n4:Crear Archivo nuevo \n5:Crear matriz \n6:Imprimir matrices temporal");
             int opcion = Convert.ToInt32(Console.ReadLine());
             switch (opcion)
             {
+                case 0:
+                    Salir = 1;
+                    break;
                 case 1:
                     if (Funciones.comprobar_encabezado() == false)
                     {
@@ -38,7 +42,7 @@ class Proyecto
                     string texto = Console.ReadLine();
                     int fila = Convert.ToInt32(Console.ReadLine());
                     int existencia = Convert.ToInt32(Console.ReadLine());
-                    Funciones.escribir_lugar_especifico(texto, fila - 1, existencia);
+                    Funciones.escribir_lugar_especifico(texto, (fila - 1).ToString(), existencia.ToString());
                     break;
                 case 4:
                     Funciones.crear_archivo();
@@ -51,13 +55,27 @@ class Proyecto
                         Excepciones.Lanzar_excepcion(3);
                         break;
                     }
-                    matriz_temporal = Funciones.crear_matriz();
+                    int[,] aux;
+                    aux = Funciones.crear_matriz();
+                    if (aux != null)
+                    {
+                        matriz_temporal = aux;
+                        Funciones.guardar_matriz_archivo(matriz_temporal,(posicion-1).ToString());
+                    }
+                    Excepciones.Lanzar_excepcion(4);
                     break;
                 case 6:
                     if (matriz_temporal != null)
                     {
                         Funciones.imprimir_matriz(matriz_temporal);
                     }
+                    else
+                    {
+                        Console.WriteLine("No se hay ninguna matriz temporal");
+                    }
+                    break;
+                case 100:
+                    Excepciones.Lanzar_bien(100);
                     break;
                 default:
                     Excepciones.Lanzar_excepcion(3);

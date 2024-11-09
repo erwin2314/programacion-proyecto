@@ -67,7 +67,7 @@ class Funciones
                 Excepciones.Lanzar_excepcion(2);
                 Sr.Close();
                 fila = i;
-                escribir_lugar_especifico("", fila, 0);
+                escribir_lugar_especifico("", fila.ToString(), "0");
                 break;
             }
             else if ((Convert.ToChar(line[2]) != Convert.ToChar("0") && Convert.ToChar(line[2]) != Convert.ToChar("1")) || Convert.ToChar(line[3]) != Convert.ToChar(";"))
@@ -75,13 +75,36 @@ class Funciones
                 Excepciones.Lanzar_excepcion(2);
                 Sr.Close();
                 fila = i;
-                escribir_lugar_especifico("", fila, 0);
+                escribir_lugar_especifico("", fila.ToString(), "0");
                 break;
             }
         }
     }
-    public static void escribir_lugar_especifico(string texto_nuevo, int fila, int existencia)
+    public static void escribir_lugar_especifico(string texto_nuevo, string filaS, string existenciaS)
     {
+        bool conversion;
+        conversion = Int32.TryParse(filaS, out int fila);
+        if (conversion == false)
+        {
+            Excepciones.Lanzar_excepcion(5);
+            return;
+        }
+        if (fila < 1 || fila > 9) //comprobacion filas
+        {
+            Excepciones.Lanzar_excepcion(5);
+            return;
+        }
+        conversion = Int32.TryParse(existenciaS, out int existencia);
+        if (conversion == false)
+        {
+            Excepciones.Lanzar_excepcion(5);
+            return;
+        }
+        if (existencia < 0 || existencia > 1) //comprobacion existencia
+        {
+            Excepciones.Lanzar_excepcion(5);
+            return;
+        }
         string[] texto_antiguo = new string[9];
         using (StreamReader Sr = new StreamReader("matrices.txt"))
         {
@@ -118,7 +141,7 @@ class Funciones
     public static int[,] crear_matriz()
     {
         bool conversion;
-        Console.WriteLine("Ingresa la cantidad de columnas");
+        Console.WriteLine("Ingresa la cantidad de filas");
         conversion = Int32.TryParse(Console.ReadLine(), out int columnas);
         if (conversion == false)
         {
@@ -126,7 +149,7 @@ class Funciones
             Excepciones.Lanzar_excepcion(4);
             return null;
         }
-        Console.WriteLine("Ingresa la cantidad de filas");
+        Console.WriteLine("Ingresa la cantidad de columnas");
         conversion = Int32.TryParse(Console.ReadLine(), out int filas);
         if (conversion == false)
         {
@@ -175,5 +198,21 @@ class Funciones
             Console.WriteLine();
         }
         Console.WriteLine();
+    }
+    public static void guardar_matriz_archivo(int[,] matriz, string fila)
+    {
+        string line;
+        line = matriz.GetLength(1).ToString() + ";";
+        line = line + matriz.GetLength(0).ToString() + ";";
+        for (int i = 0; i <= matriz.GetLength(0)-1;i++)
+        {
+            for (int j = 0; j <= matriz.GetLength(1)-1;j++)
+            {
+                line = line + matriz[i,j].ToString() + ",";
+            }
+            line = line + "/";
+            
+        }
+        escribir_lugar_especifico(line,fila,"1");
     }
 }

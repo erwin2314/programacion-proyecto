@@ -19,6 +19,9 @@ public class Excepciones
             case 4:
                 Console.WriteLine("No se pudo crear la matriz");
                 break;
+            case 5:
+                Console.WriteLine("No se pudo guardar en el archivo");
+                break;
             case 100:
                 Console.WriteLine("Ocurrio un error inesperado");
                 break;
