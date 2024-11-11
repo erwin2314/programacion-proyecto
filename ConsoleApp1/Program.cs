@@ -10,7 +10,7 @@ class Proyecto
         }
         while (Salir == 0)
         {
-            Console.WriteLine("0:Salir \n1:Comprobar estado del archivo \n2:Imprimir datos del archivo \n3:Escribir en el archivo \n4:Crear Archivo nuevo \n5:Crear matriz \n6:Imprimir matrices temporal");
+            Console.WriteLine("0:Salir \n1:Comprobar estado del archivo \n2:Imprimir datos del archivo \n3:Escribir en el archivo \n4:Crear Archivo nuevo \n5:Crear matriz \n6:Imprimir matriz especifica del archivo");
             int opcion = Convert.ToInt32(Console.ReadLine());
             switch (opcion)
             {
@@ -69,14 +69,17 @@ class Proyecto
                     
                     break;
                 case 6:
-                    Funciones.leer_matriz_archivo("0");
-                    if (matriz_temporal != null)
+                    Console.WriteLine("Cual posicion quieres ver?");
+                    string opcion6 = Console.ReadLine();
+                    int[,] aux6;
+                    try
                     {
-                        Funciones.imprimir_matriz(matriz_temporal);
+                        aux6 = Funciones.leer_matriz_archivo(opcion6);
+                        Funciones.imprimir_matriz(aux6);
                     }
-                    else
+                    catch (Exception ex) 
                     {
-                        Console.WriteLine("No se enontro ninguna matriz temporal");
+                        Excepciones.Lanzar_excepcion(7);
                     }
                     break;
                 case 100:
