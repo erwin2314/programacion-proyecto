@@ -225,6 +225,7 @@ class Funciones
             Excepciones.Lanzar_excepcion(6);
             return null;
         }
+        fila = fila - 1;
         string line;
         string[] split;
         string[] split2;
@@ -238,27 +239,62 @@ class Funciones
             }
             line = texto[fila];
         }
-        matriz = new int[Convert.ToInt32(line[4])-48, Convert.ToInt32(line[6])-48];
-        split = line.Split(';');
-        line = split[4];
         Console.WriteLine(line);
-        split = line.Split("/");
-        Console.WriteLine();
-        for (int i = 0; i < matriz.GetLength(0); i++) 
+        if (line[2] == Convert.ToChar(1))
         {
-            line = split[i];
-            line = line.Substring(0, line.Length - 1);
-            Console.WriteLine(line);
-            split2 = line.Split(",");
-            for (int j = 0; j < matriz.GetLength(1); j++)
+            matriz = new int[Convert.ToInt32(line[4]) - 48, Convert.ToInt32(line[6]) - 48];
+            split = line.Split(';');
+            line = split[4];
+            split = line.Split('/');
+            if (split.Length > matriz.GetLength(0))
             {
-                
-               matriz[i,j] = Convert.ToInt32(split2[j]);
-
+                for (int i = 0; i < matriz.GetLength(1); i++)
+                {
+                    line = split[i];
+                    line = line.Substring(0, line.Length - 1);
+                    split2 = line.Split(",");
+                    for (int j = 0; j < matriz.GetLength(0); j++)
+                    {
+                        line = split2[j];
+                        matriz[j, i] = Convert.ToInt32(line);
+                    }
+                }
             }
-            
+            else if (split.Length < matriz.GetLength(0))
+            {
+                for (int i = 0; i < matriz.GetLength(0); i++)
+                {
+                    line = split[i];
+                    line = line.Substring(0, line.Length - 1);
+                    split2 = line.Split(",");
+                    for (int j = 0; j < matriz.GetLength(1); j++)
+                    {
+                        line = split2[j];
+                        matriz[i, j] = Convert.ToInt32(line);
+                    }
+                }
+            }
+            else if (split.Length == matriz.GetLength(0))
+            {
+                for (int i = 0; i < matriz.GetLength(1); i++)
+                {
+                    line = split[i];
+                    line = line.Substring(0, line.Length - 1);
+                    split2 = line.Split(",");
+                    for (int j = 0; j < matriz.GetLength(0); j++)
+                    {
+                        line = split2[j];
+                        matriz[j, i] = Convert.ToInt32(line);
+                    }
+                }
+            }
+            return matriz;
         }
-        imprimir_matriz(matriz);
-        return matriz;
+        else
+        {
+            Excepciones.Lanzar_excepcion(6);
+            return null;
+        }
+
     }
 }
