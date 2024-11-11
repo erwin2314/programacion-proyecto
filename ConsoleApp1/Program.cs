@@ -62,16 +62,21 @@ class Proyecto
                         matriz_temporal = aux;
                         Funciones.guardar_matriz_archivo(matriz_temporal,(posicion-1).ToString());
                     }
-                    Excepciones.Lanzar_excepcion(4);
+                    else 
+                    {
+                        Excepciones.Lanzar_excepcion(4);
+                    }
+                    
                     break;
                 case 6:
+                    Funciones.leer_matriz_archivo("0");
                     if (matriz_temporal != null)
                     {
                         Funciones.imprimir_matriz(matriz_temporal);
                     }
                     else
                     {
-                        Console.WriteLine("No se hay ninguna matriz temporal");
+                        Console.WriteLine("No se enontro ninguna matriz temporal");
                     }
                     break;
                 case 100:
