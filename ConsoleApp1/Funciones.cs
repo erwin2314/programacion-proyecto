@@ -89,9 +89,10 @@ class Funciones
             Excepciones.Lanzar_excepcion(5);
             return;
         }
-        if (fila < 1 || fila > 9) //comprobacion filas
+        Console.WriteLine(fila);
+        if (fila < 0 || fila > 9) //comprobacion filas
         {
-            Excepciones.Lanzar_excepcion(5);
+            Excepciones.Lanzar_excepcion(100);
             return;
         }
         conversion = Int32.TryParse(existenciaS, out int existencia);
@@ -112,7 +113,7 @@ class Funciones
             {
                 texto_antiguo[i] = Sr.ReadLine();
             }
-            if (fila > 0 || fila < 10)
+            if (fila > -1 || fila < 9)
             {
                 texto_antiguo[fila] = (fila + 1) + ";" + existencia + ";" + texto_nuevo;
             }
@@ -201,6 +202,7 @@ class Funciones
     }
     public static void guardar_matriz_archivo(int[,] matriz, string fila)
     {
+
         string line;
         line = matriz.GetLength(1).ToString() + ";";
         line = line + matriz.GetLength(0).ToString() + ";";
@@ -214,5 +216,49 @@ class Funciones
             
         }
         escribir_lugar_especifico(line,fila,"1");
+    }
+    public static int[,] leer_matriz_archivo(string filaS)
+    {
+        bool conversion = Int32.TryParse(filaS, out int fila);
+        if (conversion == false)
+        {
+            Excepciones.Lanzar_excepcion(6);
+            return null;
+        }
+        string line;
+        string[] split;
+        string[] split2;
+        string[] texto = new string[9];
+        int[,] matriz;
+        using (StreamReader Sr = new StreamReader("matrices.txt"))
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                texto[i] = Sr.ReadLine();
+            }
+            line = texto[fila];
+        }
+        matriz = new int[Convert.ToInt32(line[4])-48, Convert.ToInt32(line[6])-48];
+        split = line.Split(';');
+        line = split[4];
+        Console.WriteLine(line);
+        split = line.Split("/");
+        Console.WriteLine();
+        for (int i = 0; i < matriz.GetLength(0); i++) 
+        {
+            line = split[i];
+            line = line.Substring(0, line.Length - 1);
+            Console.WriteLine(line);
+            split2 = line.Split(",");
+            for (int j = 0; j < matriz.GetLength(1); j++)
+            {
+                
+               matriz[i,j] = Convert.ToInt32(split2[j]);
+
+            }
+            
+        }
+        imprimir_matriz(matriz);
+        return matriz;
     }
 }
