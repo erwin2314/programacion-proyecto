@@ -39,6 +39,11 @@ public class Excepciones
                 Console.WriteLine("No se pudo leer la matriz");
                 Console.ForegroundColor = ConsoleColor.White;
                 break;
+            case 7:
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("No existe una matriz en esa posicion");
+                Console.ForegroundColor = ConsoleColor.White;
+                break;
             case 100:
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Ocurrio un error inesperado");
@@ -53,16 +58,24 @@ public class Excepciones
         switch (numero_error)
         {
             case 0:
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Se encontro el archivo correctamente");
+                Console.ForegroundColor = ConsoleColor.White;
                 break;
             case 1:
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("No se encontro ningun problema con el encabezado");
+                Console.ForegroundColor = ConsoleColor.White;
                 break;
             case 2:
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Todos los valores de existencia se encuentran bien");
+                Console.ForegroundColor = ConsoleColor.White;
                 break;
             case 100:
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("()__()");
+                Console.ForegroundColor = ConsoleColor.White;
                 break;
             default:
                 break;
