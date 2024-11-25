@@ -419,7 +419,7 @@ class Funciones
             {
                 for (int j = 0; j < matriz1.GetLength(1); j++)
                 {
-                    matriz[i, j] = matriz1[i, j] + matriz2[i, j];//Se ingresan los valores
+                    matriz[j, i] = matriz1[i, j] + matriz2[i, j];//Se ingresan los valores
                 }
             }
             return matriz;
@@ -452,7 +452,7 @@ class Funciones
             {
                 for (int j = 0; j < matriz1.GetLength(1); j++)
                 {
-                    matriz[i, j] = matriz1[i, j] - matriz2[i, j];
+                    matriz[j, i] = matriz1[i, j] - matriz2[i, j];
                 }
             }
             return matriz;
@@ -486,7 +486,7 @@ class Funciones
                 {
                     for (int k = 0; k < matriz1.GetLength(1); k++)
                     {
-                        matriz[i, j] += matriz1[i, k] * matriz2[k, j];//Solo se que funciona, lamentablemente no me acuerdo porque funciona
+                        matriz[j, i] += matriz1[i, k] * matriz2[k, j];//Solo se que funciona, lamentablemente no me acuerdo porque funciona
                     }
                 }
             }
