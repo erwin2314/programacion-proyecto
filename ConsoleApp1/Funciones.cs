@@ -247,14 +247,14 @@ class Funciones
         try
         {
             Console.WriteLine();
-            for (int i = 0; i < matriz.GetLength(1); i++)
+            for (int i = 0; i < matriz.GetLength(0); i++)
             {
                 
-                for (int j = 0; j < matriz.GetLength(0); j++)
+                for (int j = 0; j < matriz.GetLength(1); j++)
                 {
-                    Console.Write(matriz[j, i] + " ");
+                    Console.Write(matriz[i, j] + " ");
                 }
-                
+                Console.WriteLine();
             }
             Console.WriteLine();
         }
@@ -272,8 +272,8 @@ class Funciones
         {
             string line;
             //Pone en el string los valores de cantidad de filas y de columnas ya con formato
-            line = matriz.GetLength(1).ToString() + ";";
-            line = line + matriz.GetLength(0).ToString() + ";";
+            line = matriz.GetLength(0).ToString() + ";";
+            line = line + matriz.GetLength(1).ToString() + ";";
             //Escribe los valores de la matriz en el string
             for (int i = 0; i <= matriz.GetLength(0) - 1; i++)//for para filar
             {
@@ -356,7 +356,7 @@ class Funciones
                     for (int j = 0; j < matriz.GetLength(0); j++)
                     {
                         line = split2[j];
-                        matriz[j, i] = Convert.ToInt32(line);
+                        matriz[i, j] = Convert.ToInt32(line);
                     }
                 }
             }
@@ -486,15 +486,17 @@ class Funciones
                 {
                     for (int k = 0; k < matriz1.GetLength(1); k++)
                     {
-                        matriz[j, i] += matriz1[i, k] * matriz2[k, j];//Solo se que funciona, lamentablemente no me acuerdo porque funciona
+                        matriz[i, j] += matriz1[i, k] * matriz2[k, j];//Solo se que funciona, lamentablemente no me acuerdo porque funciona
+                        
                     }
                 }
             }
+            imprimir_matriz(matriz);
             return matriz;
         }
         else
         {
-            Excepciones.Lanzar_excepcion(10);
+            Excepciones.Lanzar_excepcion(15);
             return null;
         }
 
