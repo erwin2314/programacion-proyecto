@@ -82,6 +82,11 @@ public class Excepciones
                 Console.WriteLine("No se pudo sacar la transposicion");
                 Console.ForegroundColor = ConsoleColor.White;
                 break;
+            case 15:
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("No se puede utilizar estas matrices");
+                Console.ForegroundColor = ConsoleColor.White;
+                break;
             case 100:
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Ocurrio un error inesperado");
