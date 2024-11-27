@@ -17,7 +17,7 @@ class Proyecto
         while (Salir == 0)
         {
             //Imprime todo lo que se puede hacer
-            Console.WriteLine("Cualquier letra o un 0:Salir \n1:Comprobar estado del archivo \n2:Imprimir datos del archivo \n3:Manual \n4:Crear Archivo nuevo \n5:Crear matriz \n6:Imprimir matriz especifica del archivo \n7:Eliminar matriz \n8:Sumar matrices \n9:Restar matrices \n10:Multiplicacion matrices \n11:Sacar determinante \n12:Sacar transposicion");
+            Console.WriteLine("Cualquier letra o un 0:Salir \n1:Comprobar estado del archivo \n2:Imprimir datos del archivo \n3:Manual del archivo \n4:Crear Archivo nuevo \n5:Crear matriz \n6:Imprimir matriz especifica del archivo \n7:Eliminar matriz \n8:Sumar matrices \n9:Restar matrices \n10:Multiplicacion matrices \n11:Sacar determinante \n12:Sacar transposicion");
             bool conversion_opcion = Int32.TryParse(Console.ReadLine(),out int opcion);//convierte la entradad a entero
             if (conversion_opcion == false) //Si no se puede convertir a algun numero, se sale
             {
@@ -92,15 +92,15 @@ class Proyecto
                     fila6 = fila6 - 1;//siempre que el usuario ingrese el valor de una fila se le tiene que restar 1
                                       //ya sea afuera como aqui o directamente al momento de llamar una funcion que lo utilize
                     int[,] aux6;
-                    try
-                    {
+                    //try
+                    //{
                         aux6 = Funciones.leer_matriz_archivo(fila6.ToString());
                         Funciones.imprimir_matriz(aux6);
-                    }
-                    catch 
-                    {
-                        Excepciones.Lanzar_excepcion(7);
-                    }
+                    //}
+                    //catch 
+                    //{
+                        //Excepciones.Lanzar_excepcion(7);
+                    //}
                     break;
                 case 7:
                     Console.WriteLine("Ingresa la posicion que quieres vaciar");
@@ -212,7 +212,7 @@ class Proyecto
                         int[,] aux10 = Funciones.multiplicacion_matrices(Funciones.leer_matriz_archivo((fila1 - 1).ToString()), Funciones.leer_matriz_archivo((fila2 - 1).ToString()));
                         Funciones.guardar_matriz_archivo(aux10, (fila3 - 1).ToString());
                         Console.WriteLine("Resultado de la multiplicacion");
-                        Funciones.imprimir_matriz(Funciones.leer_matriz_archivo((fila3 - 1).ToString()));
+                        Funciones.imprimir_matriz(aux10);
                     }
                     catch
                     {
