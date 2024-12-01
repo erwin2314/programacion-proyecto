@@ -170,7 +170,7 @@ class Funciones
         Console.ForegroundColor = ConsoleColor.White;
     }
                                                       //Escribe en consola todo el contenido del archivo de texto
-    public static int[,] crear_matriz()
+    public static float[,] crear_matriz()
     {
         //Pregunta por la cantidad de columnas
         Console.WriteLine("Ingresa la cantidad de filas");
@@ -194,13 +194,13 @@ class Funciones
         //unicamente crea la matriz si su cantidad de filas y columnas son mayores a uno
         if ((filas > 1) && (columnas > 1))
         {
-            int[,] matriz = new int[filas, columnas];//crea la matriz
+            float[,] matriz = new float[filas, columnas];//crea la matriz
             for (int i = 0; i <= filas - 1; i++)//da valores a la matriz
             {
                 for (int j = 0; j <= columnas - 1; j++)
                 {
                     Console.WriteLine("Ingresa el valor de la fila: " + (i + 1) + " y columna: " + (j + 1));
-                    conversion = Int32.TryParse(Console.ReadLine(), out int numero);//comprueba que el numero es valido
+                    conversion = Single.TryParse(Console.ReadLine(), out float numero);//comprueba que el numero es valido
                     if (conversion == false)
                     {
                         Excepciones.Lanzar_excepcion(3);
@@ -220,7 +220,7 @@ class Funciones
         return null;
     }
                                                       //Crea una matriz de enteros, lamentablente no puse para poder llenarla de forma automatica 
-    public static void imprimir_matriz(int[,] matriz)
+    public static void imprimir_matriz(float[,] matriz)
     {
         try
         {
@@ -264,7 +264,7 @@ class Funciones
         }
     }
                                                       //Lo mismo que el de arrbia pero en linea recta y sin formato, solo se utilizo para comprobar valores, ya no se ocupa, deberia borrarlo
-    public static void guardar_matriz_archivo(int[,] matriz, string fila)
+    public static void guardar_matriz_archivo(float[,] matriz, string fila)
     {
         //Pide la matriz a guardar
         //Y la posicion en donde se va a guardar
@@ -290,7 +290,7 @@ class Funciones
         
     }
                                                       //Su nombre lo dice, guarda matrices de enteros en el archivo de texto
-    public static int[,] leer_matriz_archivo(string filaS)
+    public static float[,] leer_matriz_archivo(string filaS)
     {
         bool conversion = Int32.TryParse(filaS, out int fila);//convierte las filas a enteros
         if (conversion == false)
@@ -308,7 +308,7 @@ class Funciones
         string[] split;
         string[] split2;
         string[] texto = new string[9];
-        int[,] matriz;
+        float[,] matriz;
         //Se le asigna todo el texto al string texto
         using (StreamReader Sr = new StreamReader("matrices.txt"))
         {
@@ -322,7 +322,7 @@ class Funciones
         //comprueba que el valor de existencia sea 1
         if (line[2] == Convert.ToChar("1"))
         {
-            matriz = new int[Convert.ToInt32(line[4]) - 48, Convert.ToInt32(line[6]) - 48];//Define las dimensiones de la matriz
+            matriz = new float[Convert.ToInt32(line[4]) - 48, Convert.ToInt32(line[6]) - 48];//Define las dimensiones de la matriz
             split = line.Split(';');//Separa line por cada ; que tenga
             line = split[4];//Si todo salio bien en todo el codigo, split [4] siempre deberia contener los valor a poner en la matriz
             line = line.Substring(0, line.Length - 1);
@@ -344,7 +344,7 @@ class Funciones
                             split2 = line.Split(",");//separa line por cada coma
                             line = split2[j];
                             
-                            matriz[i, j] = Convert.ToInt32(line);
+                            matriz[i, j] = Convert.ToSingle(line);
                         }
                     }
                 }
@@ -401,9 +401,9 @@ class Funciones
     }
                                                      //Aunque en su nombre diga borrar, realmente lo que hace es remplazar el texto por un espacio
                                                      //y poner el valor de existencia en 0
-    public static int[,] suma_matrices(int[,] matriz1, int[,] matriz2)
+    public static float[,] suma_matrices(float[,] matriz1, float[,] matriz2)
     {
-        int[,] matriz;
+        float[,] matriz;
         //compruea que las matrices no sean nulas
         if (matriz1 == null || matriz2 == null)
         {
@@ -416,7 +416,7 @@ class Funciones
             imprimir_matriz(matriz1);
             Console.WriteLine(" + ");
             imprimir_matriz(matriz2);
-            matriz = new int[matriz1.GetLength(0), matriz1.GetLength(1)];//Le da dimensiones a la matriz que se va a devolver
+            matriz = new float[matriz1.GetLength(0), matriz1.GetLength(1)];//Le da dimensiones a la matriz que se va a devolver
             for (int i = 0; i < matriz1.GetLength(0); i++)
             {
                 for (int j = 0; j < matriz1.GetLength(1); j++)
@@ -434,11 +434,11 @@ class Funciones
         
     }
                                                      //Solo matrices de enteros
-    public static int[,] resta_matrices(int[,] matriz1, int[,] matriz2)
+    public static float[,] resta_matrices(float[,] matriz1, float[,] matriz2)
     {
         //Lo mismo que la suma pero con signos de -
         //literalmente lo mismo
-        int[,] matriz;
+        float[,] matriz;
         if (matriz1 == null || matriz2 == null)
         {
             Excepciones.Lanzar_excepcion(11);
@@ -449,7 +449,7 @@ class Funciones
             imprimir_matriz(matriz1);
             Console.WriteLine(" - ");
             imprimir_matriz(matriz2);
-            matriz = new int[matriz1.GetLength(0), matriz1.GetLength(1)];
+            matriz = new float[matriz1.GetLength(0), matriz1.GetLength(1)];
             for (int i = 0; i < matriz1.GetLength(0); i++)
             {
                 for (int j = 0; j < matriz1.GetLength(1); j++)
@@ -466,9 +466,9 @@ class Funciones
         }
 
     }
-    public static int[,] multiplicacion_matrices(int[,] matriz1, int[,] matriz2)
+    public static float[,] multiplicacion_matrices(float[,] matriz1, float[,] matriz2)
     {
-        int[,] matriz;
+        float[,] matriz;
         //comprueba que las matrices no sean nulas
         if (matriz1 == null || matriz2 == null)
         {
@@ -481,7 +481,7 @@ class Funciones
             imprimir_matriz(matriz1);
             Console.WriteLine(" * ");
             imprimir_matriz(matriz2);
-            matriz = new int[matriz1.GetLength(0), matriz2.GetLength(1)];//les da las dimensiones a la nueva matriz
+            matriz = new float[matriz1.GetLength(0), matriz2.GetLength(1)];//les da las dimensiones a la nueva matriz
             for (int i = 0; i < matriz1.GetLength(0); i++)
             {
                 for (int j = 0; j < matriz2.GetLength(1); j++)
@@ -502,11 +502,11 @@ class Funciones
         }
 
     }
-    public static int determinante_matriz(int[,] matriz)
+    public static float determinante_matriz(float[,] matriz)
     {
         //solo son determinantes de matrices 2x2 y 3x3
         //no se como se sacan las demas
-        int aux = 0;
+        float aux = 0;
         if (matriz == null)//comprueba que no sea nula
         {
             Excepciones.Lanzar_excepcion(13);
@@ -531,7 +531,7 @@ class Funciones
             return aux; 
         }
     }
-    public static void guardar_determinante(int determinante, string fila)
+    public static void guardar_determinante(float determinante, string fila)
     {
         //Super simple
         try
@@ -541,14 +541,14 @@ class Funciones
         catch (Exception ex) { Excepciones.Lanzar_excepcion(100); }
     }
                                                     //Esta cosa solo llama directamente a la funcion de escribir_lugar_especifico() porque como no es una matriz no puede utilizar guardar_matriz_archivo()
-    public static int[,] trasposicion(int[,] matriz)
+    public static float[,] trasposicion(float[,] matriz)
     {
         if (matriz == null)//que la matriz no sea nula
         {
             Excepciones.Lanzar_excepcion(14);
             return null;
         }
-        int[,] matriz_nueva = new int[matriz.GetLength(1), matriz.GetLength(0)];//le da dimensiones a la nueva matriz
+        float[,] matriz_nueva = new float[matriz.GetLength(1), matriz.GetLength(0)];//le da dimensiones a la nueva matriz
         if (matriz.GetLength(0) <= matriz.GetLength(1))//En caso de que la cantidad de columnas sea igual o mayor a de las filas
         {
             for (int i = 0; i < matriz.GetLength(1); i++)//for para columnas

@@ -4,7 +4,7 @@ class Proyecto
     static void Main(string[] args)
     {
         int Salir = 0;
-        int[,] matriz_temporal = null;
+        float[,] matriz_temporal = null;
 
         //comprueba que el archivo exista, si no existe lo crea
         //si existe el archivo comprueba el encabezado
@@ -67,7 +67,7 @@ class Proyecto
                         Excepciones.Lanzar_excepcion(3);
                         break;
                     }
-                    int[,] aux;
+                    float[,] aux;
                     aux = Funciones.crear_matriz();//Crea la matriz
                     if (aux != null)
                     {
@@ -91,16 +91,16 @@ class Proyecto
                     }
                     fila6 = fila6 - 1;//siempre que el usuario ingrese el valor de una fila se le tiene que restar 1
                                       //ya sea afuera como aqui o directamente al momento de llamar una funcion que lo utilize
-                    int[,] aux6;
-                    //try
-                    //{
+                    float[,] aux6;
+                    try
+                    {
                         aux6 = Funciones.leer_matriz_archivo(fila6.ToString());
                         Funciones.imprimir_matriz(aux6);
-                    //}
-                    //catch 
-                    //{
-                        //Excepciones.Lanzar_excepcion(7);
-                    //}
+                    }
+                    catch 
+                    {
+                        Excepciones.Lanzar_excepcion(7);
+                    }
                     break;
                 case 7:
                     Console.WriteLine("Ingresa la posicion que quieres vaciar");
@@ -135,7 +135,7 @@ class Proyecto
                             Excepciones.Lanzar_excepcion(3);
                         }
                         //No es tan malo como se ve
-                        int[,] aux8 = Funciones.suma_matrices(Funciones.leer_matriz_archivo((fila1 - 1).ToString()), Funciones.leer_matriz_archivo((fila2 - 1).ToString()));
+                        float[,] aux8 = Funciones.suma_matrices(Funciones.leer_matriz_archivo((fila1 - 1).ToString()), Funciones.leer_matriz_archivo((fila2 - 1).ToString()));
                         Funciones.guardar_matriz_archivo(aux8, (fila3 - 1).ToString());
                         Console.WriteLine("Resultado de la suma");
                         Funciones.imprimir_matriz(Funciones.leer_matriz_archivo((fila3 - 1).ToString()));
@@ -172,7 +172,7 @@ class Proyecto
                         {
                             Excepciones.Lanzar_excepcion(3);
                         }
-                        int[,] aux9 = Funciones.resta_matrices(Funciones.leer_matriz_archivo((fila1 - 1).ToString()), Funciones.leer_matriz_archivo((fila2 - 1).ToString()));
+                        float[,] aux9 = Funciones.resta_matrices(Funciones.leer_matriz_archivo((fila1 - 1).ToString()), Funciones.leer_matriz_archivo((fila2 - 1).ToString()));
                         Funciones.guardar_matriz_archivo(aux9, (fila3 - 1).ToString());
                         Console.WriteLine("Resultado de la resta");
                         Funciones.imprimir_matriz(Funciones.leer_matriz_archivo((fila3 - 1).ToString()));
@@ -209,7 +209,7 @@ class Proyecto
                         {
                             Excepciones.Lanzar_excepcion(3);
                         }
-                        int[,] aux10 = Funciones.multiplicacion_matrices(Funciones.leer_matriz_archivo((fila1 - 1).ToString()), Funciones.leer_matriz_archivo((fila2 - 1).ToString()));
+                        float[,] aux10 = Funciones.multiplicacion_matrices(Funciones.leer_matriz_archivo((fila1 - 1).ToString()), Funciones.leer_matriz_archivo((fila2 - 1).ToString()));
                         Funciones.guardar_matriz_archivo(aux10, (fila3 - 1).ToString());
                         Console.WriteLine("Resultado de la multiplicacion");
                         Funciones.imprimir_matriz(aux10);
@@ -228,7 +228,7 @@ class Proyecto
                         break;
                     }
                     aux11 = aux11 - 1;
-                    int determinante;
+                    float determinante;
                     determinante = Funciones.determinante_matriz(Funciones.leer_matriz_archivo(aux11.ToString()));
                     Console.WriteLine("La determinante es: " + determinante);
                     Console.WriteLine("Donde se va a guardar? (1-9)");
@@ -248,7 +248,7 @@ class Proyecto
                         Excepciones.Lanzar_excepcion(3);
                         break;
                     }
-                    int[,] auxD;
+                    float[,] auxD;
                     auxD = Funciones.trasposicion(Funciones.leer_matriz_archivo((posicion12 - 1).ToString()));
                     Console.WriteLine("La matriz transposicionada es: ");
                     Funciones.imprimir_matriz(auxD);
@@ -265,8 +265,7 @@ class Proyecto
                     Excepciones.Lanzar_bien(100); // (<>__<>)
                     break;
                 default:
-                    //En casa de que el numero dado este entre uno de los listados arriba, lanza un error
-                    Excepciones.Lanzar_excepcion(3);
+                    Salir = 1; //Sale del while
                     break;
 
             }
