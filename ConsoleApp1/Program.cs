@@ -252,6 +252,14 @@ class Proyecto
                     auxD = Funciones.trasposicion(Funciones.leer_matriz_archivo((posicion12 - 1).ToString()));
                     Console.WriteLine("La matriz transposicionada es: ");
                     Funciones.imprimir_matriz(auxD);
+                    Console.WriteLine("En que posicion se va a guardar?");
+                    conversion = Int32.TryParse(Console.ReadLine(), out int posicion12G);
+                    if (conversion == false)
+                    {
+                        Excepciones.Lanzar_excepcion(3);
+                        break;
+                    }
+                    Funciones.guardar_matriz_archivo(auxD,(posicion12G-1).ToString());
                     break;
                 case 100:
                     Excepciones.Lanzar_bien(100); // (<>__<>)

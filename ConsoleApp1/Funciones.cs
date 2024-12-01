@@ -173,8 +173,8 @@ class Funciones
     public static int[,] crear_matriz()
     {
         //Pregunta por la cantidad de columnas
-        Console.WriteLine("Ingresa la cantidad de columnas");
-        bool conversion = Int32.TryParse(Console.ReadLine(), out int columnas);
+        Console.WriteLine("Ingresa la cantidad de filas");
+        bool conversion = Int32.TryParse(Console.ReadLine(), out int filas);
         if (conversion == false)
         {//comprobacion de valores
             Excepciones.Lanzar_excepcion(3);
@@ -182,8 +182,8 @@ class Funciones
             return null;
         }
         //Pregunta por la cantidad de filas
-        Console.WriteLine("Ingresa la cantidad de filas");
-        conversion = Int32.TryParse(Console.ReadLine(), out int filas);
+        Console.WriteLine("Ingresa la cantidad de columnas");
+        conversion = Int32.TryParse(Console.ReadLine(), out int columnas);
         if (conversion == false)
         {//comprobacion de valores
             Excepciones.Lanzar_excepcion(3);
@@ -194,12 +194,12 @@ class Funciones
         //unicamente crea la matriz si su cantidad de filas y columnas son mayores a uno
         if ((filas > 1) && (columnas > 1))
         {
-            int[,] matriz = new int[columnas, filas];//crea la matriz
-            for (int i = 0; i <= columnas - 1; i++)//da valores a la matriz
+            int[,] matriz = new int[filas, columnas];//crea la matriz
+            for (int i = 0; i <= filas - 1; i++)//da valores a la matriz
             {
-                for (int j = 0; j <= filas - 1; j++)
+                for (int j = 0; j <= columnas - 1; j++)
                 {
-                    Console.WriteLine("Ingresa el valor de la columna: " + (i + 1) + " y fila: " + (j + 1));
+                    Console.WriteLine("Ingresa el valor de la fila: " + (i + 1) + " y columna: " + (j + 1));
                     conversion = Int32.TryParse(Console.ReadLine(), out int numero);//comprueba que el numero es valido
                     if (conversion == false)
                     {
@@ -325,20 +325,27 @@ class Funciones
             matriz = new int[Convert.ToInt32(line[4]) - 48, Convert.ToInt32(line[6]) - 48];//Define las dimensiones de la matriz
             split = line.Split(';');//Separa line por cada ; que tenga
             line = split[4];//Si todo salio bien en todo el codigo, split [4] siempre deberia contener los valor a poner en la matriz
+            line = line.Substring(0, line.Length - 1);
             split = line.Split('/');//ahora separa todos los valores por cada /  es decir por cada columna
 
             //Esto corre siempre que la cantidad de columnas sea mayor al de las filas
-            if (split.Length > matriz.GetLength(0))
+            if (split.Length >= matriz.GetLength(1))
             {
-                for (int i = 0; i < matriz.GetLength(1); i++)//for por cada columna
+                for (int i = 0; i < matriz.GetLength(0); i++)//for por cada fila
                 {
-                    line = split[i];//le da el valor de una columna a line
-                    line = line.Substring(0, line.Length - 1);//quita el utlimo caracter, que siempre es una coma, pero pues... no puede ser una coma
-                    split2 = line.Split(",");//separa line por cada coma
-                    for (int j = 0; j < matriz.GetLength(0); j++)//ingresa los valores a la matriz
+                    if (split[i] != null)
                     {
-                        line = split2[j];
-                        matriz[j, i] = Convert.ToInt32(line);
+                        
+                        
+                        for (int j = 0; j < matriz.GetLength(1); j++)//ingresa los valores a la matriz
+                        {
+                            line = split[i];//le da el valor de una columna a line
+                            line = line.Substring(0, line.Length - 1);//quita el utlimo caracter, que siempre es una coma, pero pues... no puede ser una coma
+                            split2 = line.Split(",");//separa line por cada coma
+                            line = split2[j];
+                            
+                            matriz[i, j] = Convert.ToInt32(line);
+                        }
                     }
                 }
             }
@@ -348,33 +355,28 @@ class Funciones
             else if (split.Length < matriz.GetLength(0)) 
             {
 
-                for (int i = 0; i < matriz.GetLength(1); i++)
+                for (int i = 0; i > matriz.GetLength(1); i++)
                 {
-                    line = split[i];
-                    line = line.Substring(0, line.Length - 1);
-                    split2 = line.Split(",");
-                    for (int j = 0; j < matriz.GetLength(0); j++)
+                    if (split[i] != null)
                     {
-                        line = split2[j];
-                        matriz[i, j] = Convert.ToInt32(line);
+                        line = split[i];
+                        line = line.Substring(0, line.Length - 1);
+                        split2 = line.Split(",");
+                        for (int j = 0; j < matriz.GetLength(0); j++)
+                        {
+                            line = split2[j];
+                            matriz[i, j] = Convert.ToInt32(line);
+                        }
                     }
+                    
                 }
             }
 
             //Viendo esto de nuevo creo que no hace falta, pero no quiero tocar nada de aqui, por lo que hay se queda
-            else if (split.Length == matriz.GetLength(0))
+            else 
             {
-                for (int i = 0; i < matriz.GetLength(1); i++)
-                {
-                    line = split[i];
-                    line = line.Substring(0, line.Length - 1);
-                    split2 = line.Split(",");
-                    for (int j = 0; j < matriz.GetLength(0); j++)
-                    {
-                        line = split2[j];
-                        matriz[j, i] = Convert.ToInt32(line);
-                    }
-                }
+                Excepciones.Lanzar_excepcion(6);
+                return null;
             } 
             return matriz;
         }
@@ -419,7 +421,7 @@ class Funciones
             {
                 for (int j = 0; j < matriz1.GetLength(1); j++)
                 {
-                    matriz[j, i] = matriz1[i, j] + matriz2[i, j];//Se ingresan los valores
+                    matriz[i, j] = matriz1[i, j] + matriz2[i, j];//Se ingresan los valores
                 }
             }
             return matriz;
@@ -452,7 +454,7 @@ class Funciones
             {
                 for (int j = 0; j < matriz1.GetLength(1); j++)
                 {
-                    matriz[j, i] = matriz1[i, j] - matriz2[i, j];
+                    matriz[i, j] = matriz1[i, j] - matriz2[i, j];
                 }
             }
             return matriz;
@@ -491,7 +493,6 @@ class Funciones
                     }
                 }
             }
-            imprimir_matriz(matriz);
             return matriz;
         }
         else
@@ -518,13 +519,14 @@ class Funciones
         }
         else if (matriz.GetLength(0) == 3 && matriz.GetLength(1) == 3)//Esta es en caso de que las matrices sean 3x3
         {
-            aux = matriz[0, 0] * (matriz[1, 1] * matriz[2, 2] - matriz[1, 2] * matriz[2, 1])
-                    - matriz[0, 1] * (matriz[1, 0] * matriz[2, 2] - matriz[1, 2] * matriz[2, 0])//Igualmente esto seria como la formula
-                    + matriz[0, 2] * (matriz[1, 0] * matriz[2, 1] - matriz[1, 1] * matriz[2, 0]); 
+            imprimir_matriz(matriz);
+            aux = matriz[0, 0] * matriz[1, 1] * matriz[2, 2] + matriz[1, 0] * matriz[2, 1] * matriz[0, 2] + matriz[2, 0] * matriz[0, 1] * matriz[1, 2];
+            aux = aux - matriz[2, 0] * matriz[1, 1] * matriz[0, 2] - matriz[0, 0] * matriz[2, 1] * matriz[1, 2] - matriz[1, 0] * matriz[0, 1] * matriz[2, 2];//Esto seria como la "formula" para sacar la determinante
             return aux;
         }
         else //errores
         {
+            
             Excepciones.Lanzar_excepcion(13);
             return aux; 
         }

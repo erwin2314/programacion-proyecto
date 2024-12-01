@@ -155,7 +155,7 @@ public class Excepciones
         Console.WriteLine("        ^ A partir de aqui comienzan los valores de la matriz, cada numero va separado por una coma");
         Console.WriteLine();
         Console.WriteLine("2;1;2;2;1,2,/3,4,/");
-        Console.WriteLine("            ^ Un / indica que hay acaba una columna");
+        Console.WriteLine("            ^ Un / indica que hay acaba una fila");
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine();
     } //Este es el manual del formato del archivo de texto
