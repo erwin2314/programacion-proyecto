@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{EEB3C44C-D93A-4C45-84ED-DB7A60318AAA}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\funciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EEB3C44C-D93A-4C45-84ED-DB7A60318AAA}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\carlo\\desktop\\programacion-proyecto\\consoleapp1\\excepciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EEB3C44C-D93A-4C45-84ED-DB7A60318AAA}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\excepciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EEB3C44C-D93A-4C45-84ED-DB7A60318AAA}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\carlo\\desktop\\programacion-proyecto\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EEB3C44C-D93A-4C45-84ED-DB7A60318AAA}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEB3C44C-D93A-4C45-84ED-DB7A60318AAA}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\carlo\\desktop\\programacion-proyecto\\consoleapp1\\excepciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEB3C44C-D93A-4C45-84ED-DB7A60318AAA}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\excepciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,26 +26,26 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\carlo\\Desktop\\programacion-proyecto\\ConsoleApp1\\Program.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
               "ToolTip": "C:\\Users\\carlo\\Desktop\\programacion-proyecto\\ConsoleApp1\\Program.cs",
               "RelativeToolTip": "ConsoleApp1\\Program.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwAcBAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwGAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T19:17:38.388Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Excepciones.cs",
               "DocumentMoniker": "C:\\Users\\carlo\\Desktop\\programacion-proyecto\\ConsoleApp1\\Excepciones.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Excepciones.cs",
               "ToolTip": "C:\\Users\\carlo\\Desktop\\programacion-proyecto\\ConsoleApp1\\Excepciones.cs",
               "RelativeToolTip": "ConsoleApp1\\Excepciones.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwAMAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T19:15:44.592Z",
               "EditorCaption": ""
@@ -58,7 +58,7 @@
               "RelativeDocumentMoniker": "ConsoleApp1\\Funciones.cs",
               "ToolTip": "C:\\Users\\carlo\\Desktop\\programacion-proyecto\\ConsoleApp1\\Funciones.cs",
               "RelativeToolTip": "ConsoleApp1\\Funciones.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAUwFgBAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAFYBAAAAAAAAAAAcwF8BAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-27T22:13:13.27Z",
               "EditorCaption": ""

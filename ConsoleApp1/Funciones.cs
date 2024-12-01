@@ -78,7 +78,7 @@ class Funciones
                 Excepciones.Lanzar_excepcion(2);
                 Sr.Close();
                 fila = i;//no se porque no utilize i directamente
-                escribir_lugar_especifico("", fila.ToString(), "0");//se lie falta algo reescribe toda la linea y pone el valor de existencia en 0
+                escribir_lugar_especifico("", fila.ToString(), "0");//se lee falta algo reescribe toda la linea y pone el valor de existencia en 0
                 break;
                 //como esto cuenta como error cierra el bucle completo y terminas volviendo al menu
             }
@@ -348,28 +348,31 @@ class Funciones
                         }
                     }
                 }
+                return matriz;
             }
 
             //Esto corre siempre que la cantidad de filas sea mayor al de las columnas
             //Lo mismo de arriba, pero con columnas y filas invertidas
-            else if (split.Length < matriz.GetLength(0)) 
+            else if (split.Length < matriz.GetLength(1)) 
             {
-
-                for (int i = 0; i > matriz.GetLength(1); i++)
+                for (int i = 0; i < matriz.GetLength(0); i++)//for por cada columna
                 {
                     if (split[i] != null)
                     {
-                        line = split[i];
-                        line = line.Substring(0, line.Length - 1);
-                        split2 = line.Split(",");
-                        for (int j = 0; j < matriz.GetLength(0); j++)
+                        
+                        
+                        for (int j = 0; j < matriz.GetLength(1); j++)//ingresa los valores a la matriz
                         {
+                            line = split[i];//le da el valor de una columna a line
+                            line = line.Substring(0, line.Length - 1);//quita el utlimo caracter, que siempre es una coma, pero pues... no puede ser una coma
+                            split2 = line.Split(",");//separa line por cada coma
                             line = split2[j];
-                            matriz[i, j] = Convert.ToInt32(line);
+                            
+                            matriz[i, j] = Convert.ToSingle(line);
                         }
                     }
-                    
                 }
+                return matriz;
             }
 
             //Viendo esto de nuevo creo que no hace falta, pero no quiero tocar nada de aqui, por lo que hay se queda
